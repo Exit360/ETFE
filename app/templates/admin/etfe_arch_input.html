@@ -1,0 +1,143 @@
+﻿{% extends "admin/admin_template.html" %}
+
+{% block title %}Calculator{% endblock %}
+
+{% block main %}
+<!--
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="this is ETFE skylight">
+    <meta name="author" content="fabrix360">
+    <meta name="keywords" content="BS5950, EN1993-1-1, ETFE">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+
+    <title> ETFE Steel Arch Estimator </title>
+</head>
+<style> h1 {
+        background-color: floralwhite; font-size: 50px;font-family:Arial rounder 'MT Extra'; border-bottom: 2px solid black;
+    }
+    #p {color:black;font-family:Arial rounder mt;font-size: 25px}
+    body { color:black; font-family:Verdana, Arial, Verdana, Geneva, Tahoma, sans-serif, Arial black; border-image-source:none}
+    input.form-control {background-color:aquamarine}
+  button.btn-btn-primary {background-color:black; color:white}
+    h6.header {
+        background-color: black;
+        color: white
+    }
+    
+</style> 
+-->
+<body>
+    <div class="header" style="padding-left:25px">
+        <h6><b> Developed by <big>fabrix360</big> April-2020</b></h6>
+        <nav>
+            <a href="https://www.fabrix360.com" target="_blank"> For feedback, questions or more information please click here </a>
+        </nav>
+
+
+        <h6> Steel check is based on BS5950 EN1993-1-1 ; The tensile stress at break assumed in ETFE film is 50 N/mm2</h6>
+        <aside>
+            <b>
+                <i>
+                    This web app is suitable for prelimenary steel circular section and etfe film thickness check estimation in typical uniformly repeated ETFE ARCHED skylights
+                    , its applicable for shallow roofs-less than 33.0 m height, maximum span up to 42.0(m), and maximum cushion width up to 4.50(m).
+                </i>
+            </b>
+           <hr/>
+        
+           
+            <h6><b> Note that (a) Fy(Yield Strength of steel used is 355MPa (b) Rise of arch is the vertical distance between arch mid point and the two fixed-end supports datum line (c) CHS= Circular Hollow Section first number is outside diamter, the second is the thickness (d) The tensile stress at break assumed in ETFE film is 50 N/mm2. Good luck and enjoy the app!</b></h6>
+        </aside>
+
+    </div>
+   
+
+
+    <div class='container' style="padding-top:50px">
+        <h2> ETFE cushion steel arch section & film thickness calculator</h2>
+        <hr>
+        <hr>
+
+        <form method='post' action='/steel'>
+
+            <div class='form-group-row'>
+                <div class='col-sm-6'>
+                    <label> Enter Span of arch in meters  </label>
+                </div>
+
+                <input type="number" step="0.01" min="0" max="42"  class="form-control" name="L"
+                       placeholder=" Enter span of arch (m)" />
+            {% if not L %}
+            
+          
+            {% else %}
+            <p> carry on</p>
+            {% endif %}
+
+
+            </div>'
+
+
+
+            <div class='form-group-row'>
+                <div class="col-sm-6">
+                    <label> Enter the width of cushion in meters </label>
+                </div>
+
+
+
+                <input type="number" step="0.01" min="1" max="4.5" Null="False" class="form-control" name="b"
+                       placeholder=" Enter the width of cushion (m)" />
+
+            </div>'
+            
+            <div class='form-group-row'>
+                <div class="col-sm-6">
+                    <label> Enter upper(outer) etfe film thickness in (microns) </label>
+                </div>
+
+
+
+                <input type="number"  min="100" max="300" Null="False" class="form-control" name="h"
+                       placeholder=" Enter etfe film thickness (microns)" />
+
+            </div>'
+
+
+
+            <div class='form-group-row'>
+                <div style=" text-align:center " class="col-sm-6">
+                </div>
+
+
+                <button type="submit" class="btn-btn-primary">
+                    Calculate
+                </button> {{users}}
+
+
+            </div>'
+
+
+
+
+
+        </form>
+        <div>
+            <img src="https://static.wixstatic.com/media/522455_c605c34ba8464f60b6d22ceee62765a0~mv2.jpg/v1/fill/w_428,h_140,al_c,q_80,usm_0.66_1.00_0.01/arch.webp" alt="etfe skylight" width="600" height="200" />
+            <img src="https://static.wixstatic.com/media/522455_0da2b36aa6594d0f9155daae21947505~mv2.jpg/v1/fill/w_339,h_213,al_c,q_80,usm_0.66_1.00_0.01/cushion-width.webp" alt="etfe cushion design" width="300" height="200" />
+        </div>
+
+
+
+
+    <p>
+
+
+</body>
+</html>
+
+{% endblock %}

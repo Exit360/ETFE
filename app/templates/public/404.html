@@ -1,0 +1,22 @@
+<!--custom child template-->
+
+{% extends 'public/public_template.html' %}
+
+{% block title %} not found {% endblock %}
+
+{%block main %}
+
+<div class='container'>
+	<div class='row'>
+		<div class='col'>
+			<h3>Some thing wrong happend</h3>
+			<h3>Check that you have the correct url or if continues please report to;  management@fabrix360.com</h3>
+			<hr>
+			<!-- below will take you back to home-->
+			<a href='/'>home</a>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

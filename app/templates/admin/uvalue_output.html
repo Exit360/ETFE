@@ -1,0 +1,128 @@
+{% extends "admin/admin_template.html" %}
+
+{% block title %}Calculator{% endblock %}
+
+{% block main %}
+
+
+<body>
+    <div class="header" style="padding-left:25px">
+        <h6><b> Created by consultant <big>fabrix360</big> April-2020</b></h6>
+        <nav>
+            <a href="https://www.fabrix360.com" target="_blank"> For questions or more information please click here and contact us </a>
+        </nav>
+
+
+        <h6> U_value is calculated type applicable when cushion height(H) to thickness(L) ratio H/L is less than or equal to 12 </h6>
+        <aside>
+            <b>
+                <i>
+                    This web app is suitable for thermal conductivity U_value calculation for ETFE double layer cushions WALLS angle between 45 to 135 degrees for a temperature diffirence of 25 degrees celsius (indoor/outdoor)
+                </i>
+            </b>
+           <hr/>
+
+
+           <!-- <h6><b> Note that (a) Fy(Yield Strength of steel used is 355MPa (b) Rise of arch is the vertical distance between arch mid point and the two fixed-end supports datum line (c) CHS= Circular Hollow Section first number is outside diamter, the second is the thickness (d) The tensile stress at break assumed in ETFE film is 50 N/mm2. Good luck and enjoy the app!</b></h6>-->
+        </aside>
+
+    </div>
+
+
+
+    <div class='container' style="padding-top:50px">
+        <h2> ETFE double layers cushion WALLS U_value calculator</h2>
+        <hr>
+        <hr>
+
+        <form method='post' action='/uvalue'>
+
+            <div class='form-group-row'>
+                <div class='col-sm-6'>
+                    <label> Enter the thickness of 2 layers cushion in meters (L) between 0.2m to 1.0m </label>
+                </div>
+
+                <input type="number" step="0.01" min="0.2" max="1" class="form-control" name="L"
+                       value="{{ L }}" />
+
+
+            </div>'
+
+
+
+            <div class='form-group-row'>
+                <div class="col-sm-6">
+                    <label> Enter the angle in degrees (see below figure) between 45 to 135 </label>
+                </div>
+
+
+
+                <input type="number" step="0.01" min="45" max="135" class="form-control" name="angle"
+                       value="{{angle}}" />
+
+             </div>'
+
+
+
+            <div class='form-group-row'>
+                <div style=" text-align:center " class="col-sm-6">
+                </div>
+
+
+                <button type="submit" class="btn-btn-primary">
+                    Calculate U_Value
+                </button>
+
+
+            </div>'
+
+
+
+
+
+        </form>
+
+
+
+
+
+
+            <div class="section">
+
+
+               <p class="section" style="font-weight:bold: font-size: 30px: color:" green" background-color:"yellow">
+                    <b> Winter Ug-value  ={{U}}  W/m2.K</b>
+                </p>
+
+
+            </div>
+
+            <div>
+                <p style="font-weight:bold: font-size: 30px: color: green">
+                    <b> Summer Ug-value = {{Us}}  W/m2.K</b>
+
+                </p>
+            </div>
+             <div class="u-value">
+                <p class="u-value" :style="font-weight:bold: font-size: 30px: color: green">
+                    <i> If you wish to reduce the Ug_value of ETFE wall you may try again to run but with reduced thickness/ and lesser than 90 degrees angle for lower summer Ug or greater than 90 degrees for lower winter Ug . Finally, adding thermal barrier(means one middle ETFE film layer, reduces U value typically by 30%</i>
+                </p>
+            </div>
+
+ <img src="https://static.wixstatic.com/media/522455_68dc5504334d433c83281a9ac4656ed9~mv2.jpg/v1/fill/w_925,h_715,al_c,q_90,usm_0.66_1.00_0.01/522455_68dc5504334d433c83281a9ac4656ed9~mv2.webp"/>
+
+</div>
+
+
+         </form>
+
+
+
+
+
+        <p>
+
+</body>
+</html>
+
+{% endblock %}

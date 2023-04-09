@@ -1,0 +1,39 @@
+{% extends "admin/admin_template.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block main %}
+
+
+<body>
+
+<h2> Select the App</h2>
+<br><br>
+
+
+<div class = "container">
+<form action="/access", method='POST'>
+  <label  for="appname">Brows the Apps:</label>
+  <select name="appname" id="appname">
+    <option calss="dropdown-menu" value="steel">ETFE steel arch CHS sizing & Outer foil layer thickness determination</option>
+    <option value="uvalue">U value calculation ETFE double layers cushion walls (W/m2.K)</option>
+    
+  </select>
+  <br><br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+<br>
+
+<p>Select the App from dropdown menue, then, click "Submit" to start estimation".</p>
+<!-- <div id="contentframe" style="position:absolute; top: 350px; left: 50px; right: 100px; bottom: 100px;"> -->
+  
+      <img src="https://static.wixstatic.com/media/522455_816565aa396c419ab1ef9fc791ef6967~mv2.jpg/v1/fill/w_370,h_220,al_c,q_80,usm_0.66_1.00_0.01/skylight_jfif.webp" alt="etfe" height="500" width="500"/>
+    </div>
+
+
+</body>
+</html>
+
+
+{% endblock %}

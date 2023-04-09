@@ -1,0 +1,181 @@
+{% extends "admin/admin_template.html" %}
+
+{% block title %}Outputs{% endblock %}
+
+{% block main %}
+<!--
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="this is ETFE skylight">
+    <meta name="author" content="fabrix360">
+    <meta name="keywords" content="BS5950, EN1993-1-1, ETFE">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+
+    <title> Steel Arch Estimator </title>
+</head>
+<style>    h1 {
+        background-color: floralwhite; font-size: 50px;font-family:Arial rounder 'MT Extra'; border-bottom: 2px solid black;
+    }
+   # p {color:black;font-family:Arial rounder mt;font-size: 25px}
+    body {
+        color: black;
+     font-family: Verdana, Arial, Verdana, Geneva, Tahoma, sans-serif, Arial black
+    }
+    input.form-control {background-color:aquamarine}
+    p.u-value {color:green;background-color:lightyellow}
+    p.section {color: darkgreen; font-size: 25px; background-color:yellow}
+    button.btn-btn-primary {background-color:black; color:white }
+    h6.header {background-color:black; color:white}
+
+</style>
+-->
+<body>
+    <div class="header" style="Border-top:25px">
+        <h6> <b>Developed by <big>fabrix360</big> April-2020</b></h6>
+        <nav>
+            <a href="https://www.fabrix360.com" target="_blank"> For feedback, questions or more information please click here</a>
+        </nav>
+
+        <h6> Steel check is based on BS5950 EN1993-1-1 ; The tensile stress at break assumed in ETFE film is 50 N/mm2</h6>
+        <aside>
+            <b>
+                <i>
+                    This web app is suitable for prelimenary steel circular section and ETFE film thickness check estimation in typical uniformly repeated ETFE ARCHED skylights
+                    , its applicable for shallow roofs-less than 33.0 m height, maximum span up to 42.0(m), and maximum cushion width up to 4.50(m).
+                </i>
+            </b>
+            <hr />
+            <h6><b> Note that (a) Fy(Yield Strength of steel used is 355MPa (b) Rise of arch is the vertical distance between arch mid point and the two fixed-end supports datum line (c) CHS= Circular Hollow Section first number is outside diamter, the second is the thickness (d) The tensile stress at break assumed in ETFE film is 50 N/mm2. Good luck and enjoy the app!</b></h6>
+        </aside>
+    </div>
+
+    <div class='container' style="padding-top:50px">
+        <h2>ETFE cushion steel arch section & film thickness calculator </h2>
+        <hr>
+        <hr>
+
+        <form method='post' action='/steel'>
+
+            <div class='form-group-row'>
+                <div class='col-sm-6'>
+                    <label> Enter span of arch in meters  </label>
+                </div>
+
+                <input type="text" step="0.01" min="10" max="42" class="form-control" name="L"
+                       value="{{L}}" />
+
+            </div>'
+
+
+
+            <div class='form-group-row'>
+                <div class="col-sm-6">
+                    <label> Enter the width of cushion in meters </label>
+                </div>
+
+
+
+                <input type="text" step="0.01" min="1" max="4.5" class="form-control" name="b"
+                       value="{{b}}" />
+
+
+
+            </div>
+
+            <div class='form-group-row'>
+                <div class="col-sm-6">
+                    <label> Enter upper(outer) etfe film thickness in (microns) </label>
+                </div>
+
+
+
+                <input type="text" step="1" min="100text" max="300" class="form-control" name="h"
+                       value="{{h}}" />
+
+            </div>'
+
+            <div class='form-group-row'>
+                <div style=" text-align:center " class="col-sm-6">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">
+                    Calculate
+                </button>
+
+
+
+            </div>
+
+
+
+            <div class="section">
+                <p class="section" style="font-weight:bold: font-size: 30px: color:" green" background-color:"yellow">
+                    <b> Arch section suggested is  <mark> {{S}} </mark></b>
+                </p>
+
+
+            </div>
+
+            <div>
+                <p style="font-weight:bold: font-size: 30px: color: green">
+                    Minimum arch rise shall be   {{f}} meters
+
+                </p>
+            </div>
+
+            <div>
+                <p style="font-weight:bold: font-size: 30px: color: green">
+                    The design ultimate moment assumed    {{M}} KN.m
+
+                </p>
+            </div>
+
+            <div>
+                <p style="font-weight:bold: font-size: 30px: color: green">
+
+                    The design ultimate axial compression force assumed   {{Fh}} KN
+                </p>
+            </div>
+
+            <div class="u-value">
+                <p class="u-value" :style="font-weight:bold: font-size: 30px: color: green">
+                    The design ratio of suggested section is  --  {{u}} -- Less than 1.0 OK 
+                </p>
+            </div>
+            <div class="u-value">
+                <p class="u-value" :style="font-weight:bold: font-size: 30px: color: green">
+                   Based on cushion rise (h)-see below sketch- equals to --{{t}}-mm, the resulted etfe maximum stress is<mark><b> --  {{stress}}--N/mm2</b></mark> <i>,<i>now if this resulted stress is greater than 21 N/mm2, then you MUST repeat claculations with increased film thickness or reduced cushion width </i>
+                </p>
+            </div>
+
+            <div class="u-value">
+                <p class="u-value" :style="font-weight:bold: font-size: 30px: color: green">
+                    Steel approximate weight is<mark><b> --  {{kg_psm}}--kg/m2 including 1.5m maximum height of supports pipes and typical needed transverse struts-no waste allowed-</b></mark> <i>,<i>multiply this weight with the total meters squares you have to get total steel weight </i>
+                </p>
+            </div>
+
+</div>
+
+
+         </form>
+          <div class='form-group-row'>
+          <div class="col-sm-6">
+            <img src="https://static.wixstatic.com/media/522455_c605c34ba8464f60b6d22ceee62765a0~mv2.jpg/v1/fill/w_428,h_140,al_c,q_80,usm_0.66_1.00_0.01/arch.webp" alt="etfe skylight" width="600" height="200" />
+            <img src="https://static.wixstatic.com/media/522455_0da2b36aa6594d0f9155daae21947505~mv2.jpg/v1/fill/w_339,h_213,al_c,q_80,usm_0.66_1.00_0.01/cushion-width.webp" alt="etfe cushion design" width="300" height="200" />
+          </div>
+          </div>
+
+
+
+
+        <p>
+
+</body>
+</html>
+
+{% endblock %}
